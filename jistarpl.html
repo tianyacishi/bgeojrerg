@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+<title>『缘倩娱乐』</title>
+<meta name="Description"  content="『缘倩娱乐』">
+<meta name="keywords" content="源码下载,软件下载,音乐搜索,在线视听,源码论坛,asp,技术文章,极星设计">
+<meta name="author" content="缘倩娱乐">
+<meta http-equiv=Content-Type content=text/html; charset=gb2312>
+<link rel=stylesheet href='images/jistar.css' type=text/css>
+<STYLE TYPE="text/css">
+<!--
+       A:VISITED 
+{
+	 COLOR: #223344;
+	 TEXT-DECORATION: none ;
+}
+       A:ACTIVE 
+{
+	 COLOR:  #334455;
+	 TEXT-DECORATION: none ;
+}
+       A:HOVER 
+{
+	COLOR:#66CC66;
+	 TEXT-DECORATION: none ;
+	 CURSOR:hand;
+}
+      A:LINK 
+{
+	 COLOR:#334455;
+	 TEXT-DECORATION: none ;
+}
+       BODY 
+{
+	 SCROLLBAR-FACE-COLOR:white;
+	 SCROLLBAR-SHADOW-COLOR:#666666;
+	 SCROLLBAR-HIGHLIGHT-COLOR:#666666;
+	 SCROLLBAR-3DLIGHT-COLOR:white;
+	 SCROLLBAR-DARKSHADOW-COLOR:white;
+	 SCROLLBAR-TRACK-COLOR:white;
+	SCROLLBAR-ARROW-COLOR:#666666;
+	 FONT-SIZE:9pt;
+	 CURSOR:crosshair;
+	BACKGROUND:#FFFFFF url(images/pl_skin2.jpg) no-repeat fixed center 330px;
+}
+ .TEXT
+{
+	FONT-SIZE: 9pt;
+	COLOR:#a0b0c0;
+	;
+	font-family: "Arial", "Helvetica", "sans-serif";
+}
+       TD 
+{
+	FONT-SIZE: 9pt;
+	COLOR:#339900;
+	font-family: "Arial", "Helvetica", "sans-serif";
+}
+-->
+</STYLE>
+<script language="JavaScript"><!--
+	// p2p中国，P2P联盟论坛
+	// www.ppcn.net,www.p2pbbs.net
+
+	var via = opener;
+	var write_via = "opener";
+	var iLoc= self.location.href;
+	// List特性设置
+	function playSel(){via.wmpStop();via.startExobud();}
+	function refreshPl(){ self.location=iLoc;}
+	function chkSel(){via.chkAllSel();refreshPl();}
+	function chkDesel(){via.chkAllDesel();refreshPl();}
+
+	function dspList(n){
+		// elmABlock 
+		var elmABlock= 15;//每页歌曲数量设置
+		var totElm = via.intMmCnt;
+		var totBlock= Math.floor((via.intMmCnt -1) / elmABlock)+1;
+		var cblock;
+		if(n==null){cblock=1;}
+		else{cblock=n;}
+		var seed;
+		var limit;
+		if(cblock < totBlock){seed= elmABlock * (cblock-1); limit =  cblock*elmABlock -1}
+		else{seed=elmABlock * (cblock-1); limit= totElm-1;}
+
+	if(via.intMmCnt >0 ){
+		var list_num=0;
+		mmList.innerHTML='<p>';
+		pageList.innerHTML=' &nbsp;Page ';
+		for (var i=seed; i <= limit; i++)
+		{	list_num = i + 1;
+			if(via.objMmInfo[i].selMm=="t"){elm='<input type=checkbox  style="cursor:hand;" onClick='+ write_via + '.chkItemSel('+ i +'); checked>' ;}
+			else{elm = '<input type=checkbox style="cursor:hand;" onClick='+ write_via + '.chkItemSel('+ i +');>' ;}
+			elm = elm + '&nbsp;<img src="images/m1.gif">' + list_num + '. ' 
+			elm = elm + '<a href=javascript:' + write_via + '.selPlPlay(' + i + ');'
+			elm = elm + ' onclick=\"this.blur();\">' + via.objMmInfo[i].mmTit + '</a><br>';
+			mmList.innerHTML=mmList.innerHTML+elm;
+		}
+		for(var j=1; j<=totBlock; j++){
+			page='<a href=javascript:dspList('+j+')>['+j+']<a> ';
+			pageList.innerHTML=pageList.innerHTML+page;
+		}
+
+
+
+		pageInfo.innerHTML='Jistar MD&nbsp&nbsp'+cblock+ '  / '+ totBlock;
+	}
+	else { mmList.innerHTML='<div align=center> Jistar MD  </div>'; }
+	 }
+--></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+</HEAD>
+<BODY oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onload="dspList();this.focus()" text="silver" topmargin=0 leftmargin=0 marginwidth=0 marginheight=0 style="border: 0px solid black; margin: 0pt;">
+<table border=0 cellpadding=0 cellspacing=0 width=100% height=100%>
+  <tbody>
+    <tr> 
+      <td width="100%" height="25" bgcolor="F4F4EE" align=center valign=middle><img src="images/pl.gif" width="157" height="25" border="0"></td>
+    </tr>
+    <tr> 
+      <td width=100% height=*% valign=top align=left > <div id="mmList"> 
+          <p></div>
+  </tbody>
+  <tbody>
+  <td></tr>
+  <tr> 
+    <td height=30><div id="pageList"> 
+        <p></div></td>
+  </tr>
+  <tr> 
+    <td width="100%" height="25" bgcolor="F4F4EE" align=center valign=middle><span id="pageInfo"></span>&nbsp;&nbsp; 
+      <A href="#" onClick="chkSel();" onFocus="this.blur()" title="全选"><img src="images/allsel.gif" width="35" height="10" border="0"></A> 
+      <A href="#" onClick="chkDesel()" onFocus="this.blur()" title="清除"><img src="images/alldesel.gif" width="35" height="10" border="0"></A> 
+      <A href="#" onClick="playSel();" onFocus="this.blur()" title="播放"><img src="images/play.gif" width="35" height="10" border="0"></A> 
+      <A href="#" onClick = "window.close();" onFocus='this.blur()' title="关闭"><img src="images/close.gif" width="35" height="10" border="0"></A> 
+      &nbsp; &nbsp; </td>
+  </tr></tbody>
+</table>
+</body>
+</html>

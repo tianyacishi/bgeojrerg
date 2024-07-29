@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<title>『缘倩娱乐』</title>
+<meta name="Description"  content="『缘倩娱乐』">
+<meta name="keywords" content="源码下载,软件下载,音乐搜索,在线视听,源码论坛,asp,技术文章,极星设计">
+<meta name="author" content="缘倩娱乐">
+<meta http-equiv=Content-Type content=text/html; charset=gb2312>
+<link rel=stylesheet href='images/jistar.css' type=text/css>
+<STYLE TYPE="text/css">
+<!--
+     A:LINK 
+{
+	 COLOR: silver;
+	 TEXT-DECORATION: none ;
+}
+     A:HOVER 
+{
+	 COLOR: white;
+	 TEXT-DECORATION: none ;
+}
+     A:ACTIVE 
+{
+	 COLOR: white;
+	 TEXT-DECORATION: none ;
+}
+     A:VISITED 
+{
+	 COLOR: silver;
+	 TEXT-DECORATION: none ;
+}
+     BODY 
+{
+	 MARGIN: 0px 0px 0px 0px;
+	 BACKGROUND:white;
+	 CURSOR:crosshair;
+}
+ .TITLE
+{
+	 FONT-FAMILY: "Arial", "Helvetica", "sans-serif";
+	 FONT-SIZE: 12px;
+	 COLOR:#222222;
+	 ;
+}
+.TIME
+{
+	FONT-FAMILY: "Times New Roman", "Times", "serif";
+	 FONT-SIZE: 12px;
+	 COLOR:#505050;
+	 ;
+}
+-->
+</STYLE>
+<SCRIPT Language="JavaScript" src="jistarbud.js"></SCRIPT>
+<SCRIPT Language="JavaScript"><!--
+
+//基本功能设置，true为开放，false为关闭。
+//定义是否自动播放
+var blnAutoStart = true;
+//定义是否循序播放
+var blnRndPlay = false; 
+//定义是否显示状态栏
+var blnStatusBar = true; 
+//定义是否显示音控状态
+var blnShowVolCtrl = true;
+//定义是否允许显示播放清单
+var blnShowPlist = true;
+//定义是否使用SMI模式（如无需要请勿修改）
+var blnUseSmi = false;
+//定义是否循环播放
+var blnLoopTrk = true;
+//定义是否跳出歌曲信息
+var blnShowMmInfo =false;
+--></SCRIPT>
+<script language="javascript" src="bglist.js"></script>
+<script language="javascript" src="time.js"></script>
+<SCRIPT Language ="JScript" FOR=Exobud EVENT=openStateChange(sf)> evtOSChg(sf); </SCRIPT>
+<SCRIPT Language ="JScript" FOR=Exobud EVENT=playStateChange(ns)> evtPSChg(ns); </SCRIPT>
+<SCRIPT Language ="JScript" FOR=Exobud EVENT=error()> evtWmpError(); </SCRIPT>
+<SCRIPT Language ="JScript" FOR=Exobud EVENT=Buffering(bf)> evtWmpBuff(bf); </SCRIPT>
+<SCRIPT Language ="JavaScript" src="imgchg.js"></SCRIPT>
+</HEAD>
+
+<BODY onLoad="initExobud();show5();" style="overflow:hidden;" topmargin=0 leftmargin=0 marginwidth=0 marginheight=0>
+ <OBJECT ID=Exobud CLASSID="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6"
+	type="application/x-oleobject"	Standby="Loading.... Microsoft Windows Media Player"
+	width="0" height="0" style="position:relative;left:0px; top:0px;">
+	<param name="autoStart" value="true"> 
+	<param name="balance" value="0"> 
+	<param name="currentPosition" value="0"> 
+	<param name="currentMarker" value="0"> 
+	<param name="enableContextMenu" value="false"> 
+	<param name="enableErrorDialogs" value="false"> 
+	<param name="enabled" value="true"> 
+	<param name="fullScreen" value="false"> 
+	<param name="invokeURLs" value="false"> 
+	<param name="mute" value="false"> 
+	<param name="playCount" value="1"> 
+	<param name="rate" value="1"> 
+	<param name="uiMode" value="none"> 
+	<param name="volume" value="100"> 
+</OBJECT>
+
+ <TABLE  border=0 cellspacing=0 cellpadding=0 height=25 width=100%>
+  <TR>
+    <TD width=85 height=25  background="images/bg_logo.gif" NOWRAP onClick="vizExobud()" style="cursor:help;">&nbsp;</TD>
+    <TD valign=middle  width=245 height=25 background="images/bg2.gif" NOWRAP>&nbsp; 
+      <marquee behavior="scroll" scrolldelay=70 scrollamount=2 width=225 height=12>
+      <span id="disp1" width=200 class="title" align=left>CnSide MP V1.0.1</span>   
+      <span id=liveclock width=150 class="title"> </span> 
+      </marquee>
+    </TD>
+    <TD width=105 height=25 align=center valign=middle background="images/bg32.gif" NOWRAP onClick="chgTimeFmt();this.blur();"> 
+      <span id="disp2" width=100 class="time" align="center" title ="时间显示(Elaps/Laps)" style="cursor:hand;">00:00 
+      | 00:00</span> </TD>
+    <TD width=20 height=25 background="images/bg.gif"  align=center valign=middle NOWRAP><img name="scope" src="images/roll_off.gif" width=20 height=25 border=0></TD>
+    <TD height=25 class="title" valign=bottom background="images/bg.gif" NOWRAP>&nbsp; <img name="vmute" src="images/btn_mute_off.gif" border=0 width=16 height=20 onClick="wmpMute();this.blur();" style="cursor:hand;" title="静音(Mute)"><img   
+	name="vdn" src="images/btn_vdn.gif" border=0 width=16 height=20 onClick="wmpVolDn();this.blur();" style="cursor:hand;" title="降音"><img 
+	name="vup" src="images/btn_vup.gif" border=0 width=16 height=20 onClick="wmpVolUp();this.blur();" style="cursor:hand;" title="增音"> 
+      <img name="pmode" src="images/btn_rndmode_off.gif" border=0 width=16 height=20 onClick="chgPMode();this.blur();" style="cursor:hand;" title="模式选择"><img  
+	name="rept" src="images/btn_rept_off.gif" border=0 width=16 height=20 onClick="chkRept();this.blur();" style="cursor:hand;" title="循环选择"> 
+      <img name="prevt" src="images/btn_prev.gif" border=0 width=16 height=20 onClick="playPrev();this.blur();" style="cursor:hand;" title="上一首"><img  
+	 name="pauzt" src="images/btn_pauz_off.gif" border=0 width=16 height=20 onClick="wmpPP();this.blur();" style="cursor:hand;" title="暂停/继续"><img 
+	 name="stopt" src="images/btn_stop.gif" border=0 width=16 height=20 onClick="wmpStop();this.blur();" style="cursor:hand;" title="停止"><img 
+	 name="playt" src="images/btn_play.gif" border=0 width=16 height=20 onClick="startExobud();this.blur();" style="cursor:hand;" title="播放"><img 
+	 name="nextt" src="images/btn_next.gif" border=0 width=16 height=20 onClick="playNext();this.blur();" style="cursor:hand;" title="下一首"> 
+      <img name="plist" src="images/btn_plist.gif" border=0 width=16 height=20 onClick="openPlist();this.blur();" style="cursor:hand;" title="列表选歌">   
+      　<img src="images/MEDIAPLAYER.gif" width="104" height="17"> ←没有动听音乐？请立即下载安装</TD>  
+  </TR>
+
+  <TR>
+    <TD colspan=6 height=0 bgcolor="white">
+      <div id="capText" style="width:100%;height:60;font-size:11px;color:white;background-color:#555555;display:none;"><P>JiStar MD V1.0.1</div>  
+   </TD>
+  </TR>
+ </TABLE>
+</body>
+</html>
